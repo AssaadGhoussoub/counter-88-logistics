@@ -21,12 +21,16 @@ import {
   ClipboardCheck,
   FileCheck,
   PackageCheck,
-  MapPin
+  MapPin,
+  Award,
+  Facebook,
+  Linkedin,
+  Instagram
 } from 'lucide-react';
 
 /**
  * COUNTER 88 GLOBAL LOGISTICS
- * Version: Final Polish (Responsive & Aligned)
+ * Version: 2.5 (Lighter Backgrounds)
  * Style: Modern Fintech/Tech inspired
  */
 
@@ -66,22 +70,60 @@ const GlobalStyles = () => (
     input, select, textarea {
       font-size: 16px !important; 
     }
+    html {
+      scroll-behavior: smooth;
+    }
   `}</style>
 );
 
-// --- Custom Logo ---
+// --- Custom Logo (Exact Color Match) ---
 const Logo88 = ({ className }) => (
   <svg viewBox="0 0 100 40" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 20 H 40" stroke="#D4AF37" strokeWidth="4" strokeLinecap="round" />
-    <path d="M10 20 H 40" stroke="#DC2626" strokeWidth="1" />
-    <path d="M60 20 H 90" stroke="#D4AF37" strokeWidth="4" strokeLinecap="round" />
-    <path d="M60 20 H 90" stroke="#DC2626" strokeWidth="1" />
-    <circle cx="42" cy="15" r="10" stroke="#D4AF37" strokeWidth="4" />
-    <circle cx="42" cy="15" r="10" stroke="#DC2626" strokeWidth="0.5" strokeDasharray="2 2" />
-    <circle cx="58" cy="25" r="10" stroke="#D4AF37" strokeWidth="4" />
-    <circle cx="58" cy="25" r="10" stroke="#DC2626" strokeWidth="0.5" strokeDasharray="2 2" />
+    {/* Wings - Gold body with Red stripe */}
+    <path d="M5 20 L 35 20 L 35 18 L 5 18 Z" fill="#D4AF37" />
+    <path d="M65 20 L 95 20 L 95 18 L 65 18 Z" fill="#D4AF37" />
+    
+    <path d="M5 19 H 35" stroke="#DC2626" strokeWidth="1" />
+    <path d="M65 19 H 95" stroke="#DC2626" strokeWidth="1" />
+
+    {/* Interlocking Rings '88' - Blue Fill, Red Border */}
+    {/* Top-Left Ring */}
+    <circle cx="42" cy="16" r="9" fill="#0047AB" stroke="#DC2626" strokeWidth="2.5" />
+    
+    {/* Bottom-Right Ring */}
+    <circle cx="58" cy="24" r="9" fill="#0047AB" stroke="#DC2626" strokeWidth="2.5" />
   </svg>
 );
+
+// --- Secure Reveal Component (Anti-Spam) ---
+const SecureReveal = ({ value, type, label, className = "" }) => {
+  const [revealed, setRevealed] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setRevealed(true);
+  };
+
+  if (revealed) {
+    const href = type === 'email' ? `mailto:${value}` : `tel:${value.replace(/\s+/g, '')}`;
+    return (
+      <a href={href} className={`hover:text-[#D4AF37] transition-colors break-all ${className}`}>
+        {value}
+      </a>
+    );
+  }
+
+  return (
+    <button 
+      onClick={handleClick}
+      className={`text-[#DC2626] hover:text-[#D4AF37] font-bold uppercase tracking-wider transition-colors text-sm focus:outline-none flex items-center ${className}`}
+      aria-label={`Show ${label}`}
+    >
+      <span>Show {label}</span>
+      <Eye className="ml-2 h-4 w-4" />
+    </button>
+  );
+};
 
 // --- Intersection Observer Hook ---
 const useOnScreen = (ref) => {
@@ -140,7 +182,7 @@ const Navigation = ({ onNavigate, currentPage }) => {
   const navLinks = [
     { name: 'Services', id: 'services' },
     { name: 'Process', id: 'process' },
-    { name: 'Trust & Safety', id: 'trust' },
+    { name: 'About Us', id: 'about' },
   ];
 
   const handleNavClick = (id) => {
@@ -148,16 +190,18 @@ const Navigation = ({ onNavigate, currentPage }) => {
     setIsOpen(false);
     setTimeout(() => {
       const element = document.getElementById(id);
-      if (element) element.scrollIntoView({ behavior: 'smooth' });
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }, 100);
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#001222]/95 backdrop-blur-xl border-b border-white/5 shadow-2xl' : 'bg-gradient-to-b from-[#001222]/80 to-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#051e36]/95 backdrop-blur-xl border-b border-white/5 shadow-2xl' : 'bg-gradient-to-b from-[#051e36]/80 to-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
-            <Logo88 className="h-8 sm:h-10 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300" />
+            <Logo88 className="h-10 sm:h-12 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300" />
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors hidden sm:block">
               COUNTER <span className="text-[#D4AF37]">88</span>
             </span>
@@ -196,7 +240,7 @@ const Navigation = ({ onNavigate, currentPage }) => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 bg-[#001222]/98 backdrop-blur-2xl z-40 transition-transform duration-300 md:hidden flex flex-col justify-center ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed inset-0 bg-[#051e36]/98 backdrop-blur-2xl z-40 transition-transform duration-300 md:hidden flex flex-col justify-center ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="px-8 space-y-8">
           {navLinks.map((link) => (
             <button
@@ -240,31 +284,37 @@ const HeroSection = ({ onNavigate }) => {
   }, []);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#001222] flex flex-col justify-center py-20 lg:py-0">
+    <section className="relative min-h-screen overflow-hidden bg-[#051e36] flex flex-col justify-center py-20 lg:py-0">
       {/* Carousel Layer */}
       {images.map((img, index) => (
         <div 
           key={index}
-          className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${index === currentImage ? 'opacity-40 scale-100' : 'opacity-0 scale-110'}`}
+          className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${index === currentImage ? 'opacity-60 scale-100' : 'opacity-0 scale-110'}`}
         >
           <img 
             src={img} 
             alt="Logistics Background" 
-            className="w-full h-full object-cover grayscale-[30%]"
+            className="w-full h-full object-cover"
           />
         </div>
       ))}
       
-      <div className="absolute inset-0 bg-gradient-to-r from-[#001222] via-[#001222]/80 to-[#001222]/40 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#051e36] via-[#051e36]/70 to-[#051e36]/30 z-10"></div>
       
       <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-600/20 rounded-full blur-[80px] sm:blur-[100px] animate-pulse-glow z-0"></div>
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-[#D4AF37]/10 rounded-full blur-[60px] sm:blur-[80px] animate-float z-0"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-3xl pt-16 sm:pt-0">
-          <div className="inline-flex items-center space-x-2 glass-panel rounded-full px-4 py-2 mb-8 animate-fade-up" style={{animationDelay: '0.1s'}}>
-            <ShieldCheck className="h-4 w-4 text-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">Secure. Reliable. Verified.</span>
+          
+          <div className="inline-flex items-center space-x-3 glass-panel rounded-full pl-2 pr-6 py-2 mb-8 animate-fade-up border border-[#D4AF37]/30" style={{animationDelay: '0.1s'}}>
+            <div className="bg-[#D4AF37] text-[#051e36] rounded-full p-1.5">
+              <Award className="h-4 w-4" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest leading-none">Since 2005</span>
+              <span className="text-[#D4AF37] text-[9px] sm:text-[10px] uppercase tracking-wider leading-none mt-0.5">Office in Guangzhou</span>
+            </div>
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-8 leading-tight animate-fade-up" style={{animationDelay: '0.2s'}}>
@@ -292,7 +342,7 @@ const HeroSection = ({ onNavigate }) => {
             <button 
                onClick={() => {
                  const el = document.getElementById('services');
-                 if(el) el.scrollIntoView({ behavior: 'smooth'});
+                 if(el) el.scrollIntoView({ behavior: 'smooth' });
                }}
                className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-wider rounded-full hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm"
             >
@@ -319,7 +369,7 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section id="process" className="py-24 md:py-32 bg-[#001222] relative">
+    <section id="process" className="py-24 md:py-32 bg-[#051e36] relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#D4AF37]/30 to-transparent"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -334,13 +384,12 @@ const ProcessSection = () => {
           {steps.map((step, idx) => (
             <FadeInSection key={idx} className="h-full" style={{transitionDelay: `${idx * 100}ms`}}>
               <div className="glass-panel p-8 rounded-2xl h-full relative group glass-card transition-all duration-500">
-                <div className="absolute -top-6 left-6 bg-[#001222] border border-[#D4AF37]/30 text-[#D4AF37] w-12 h-12 flex items-center justify-center rounded-full text-xl font-bold group-hover:bg-[#D4AF37] group-hover:text-[#001222] transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <div className="absolute -top-6 left-6 bg-[#051e36] border border-[#D4AF37]/30 text-[#D4AF37] w-12 h-12 flex items-center justify-center rounded-full text-xl font-bold group-hover:bg-[#D4AF37] group-hover:text-[#051e36] transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]">
                   <step.icon className="h-6 w-6" />
                 </div>
                 <h3 className="mt-8 text-xl font-bold text-white mb-4 group-hover:text-[#D4AF37] transition-colors">{step.title}</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">{step.desc}</p>
                 
-                {/* Connector line for desktop */}
                 {idx < steps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10 text-slate-700">
                     <ChevronRight className="h-6 w-6" />
@@ -355,39 +404,34 @@ const ProcessSection = () => {
   );
 };
 
-const TrustSection = () => {
+const AboutSection = () => {
   return (
-    <section id="trust" className="py-24 md:py-32 bg-[#000d1a] relative overflow-hidden">
-      {/* Ambient Backgrounds */}
+    <section id="about" className="py-24 md:py-32 bg-[#031626] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#DC2626]/10 rounded-full blur-[120px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-16 md:gap-20 items-center">
           <FadeInSection>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
-              Why Trust <br/><span className="text-[#D4AF37]">Counter 88</span>?
-            </h2>
-            <p className="text-slate-400 mb-10 text-lg leading-relaxed">
-              In an industry full of uncertainties, we stand as your verified partner. We prioritize security, honesty, and operational excellence above all else.
+            <div className="mb-8">
+              <span className="text-[#DC2626] font-bold uppercase tracking-widest text-sm">About Us</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-8 leading-tight">
+                Counter <span className="text-[#D4AF37]">88</span>
+              </h2>
+            </div>
+            
+            <p className="text-white text-xl md:text-2xl font-semibold mb-6 leading-relaxed">
+              Importing from China made simple and transparent. 
+              <span className="text-[#D4AF37]"> Your cargo shouldn’t be a gamble.</span>
             </p>
             
-            <div className="space-y-8">
-               {[
-                 { icon: ShieldCheck, title: "100% Verified Partners", desc: "Rigorous 20-point safety audit for all carriers." },
-                 { icon: Lock, title: "Transparent Billing", desc: "No hidden fees. The quote is final." },
-                 { icon: Clock, title: "24/7 Human Support", desc: "Real experts, not automated bots." }
-               ].map((item, i) => (
-                 <div key={i} className="flex items-start group">
-                   <div className="p-3 rounded-xl bg-white/5 mr-6 group-hover:bg-[#D4AF37]/20 transition-colors flex-shrink-0">
-                     <item.icon className="h-6 w-6 text-[#D4AF37]" />
-                   </div>
-                   <div>
-                     <h4 className="text-white font-bold text-lg">{item.title}</h4>
-                     <p className="text-sm text-slate-500 mt-1">{item.desc}</p>
-                   </div>
-                 </div>
-               ))}
+            <p className="text-slate-400 mb-10 text-lg leading-relaxed border-l-4 border-white/10 pl-6">
+              Clear steps. Fair prices. Reliable imports. <br/>
+              <span className="text-white mt-2 block">Backed by <strong className="text-[#D4AF37]">C-Sky China</strong> — 20 years experience.</span>
+            </p>
+            
+            <div className="inline-block px-6 py-3 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-slate-300 font-medium">For wholesalers, traders, startups, and online sellers.</span>
             </div>
           </FadeInSection>
 
@@ -403,7 +447,7 @@ const TrustSection = () => {
                 {[
                   "We NEVER ask for Crypto/Gift Card payments.",
                   "Verify emails come from @counter-88.com.",
-                  "Always request formal Bill of Lading (BOL).",
+                  "Always request formal Bill of Lading (BL).",
                   "Report suspicious activity immediately."
                 ].map((tip, i) => (
                   <li key={i} className="flex items-start text-slate-300">
@@ -412,9 +456,6 @@ const TrustSection = () => {
                   </li>
                 ))}
               </ul>
-              <button className="mt-10 w-full py-4 rounded-xl border border-white/10 text-white font-bold hover:bg-white/5 transition-all uppercase text-sm tracking-widest">
-                Read Security Guide
-              </button>
             </div>
           </FadeInSection>
         </div>
@@ -443,7 +484,7 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-[#001222]">
+    <section id="services" className="py-24 md:py-32 bg-[#051e36]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeInSection>
           <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
@@ -460,12 +501,9 @@ const ServicesSection = () => {
                   <service.icon className="h-8 w-8 text-white group-hover:text-[#D4AF37] transition-colors" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
-                <p className="text-slate-400 mb-8 leading-relaxed">
+                <p className="text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
-                <span className="text-[#D4AF37] font-bold text-sm uppercase flex items-center group-hover:translate-x-2 transition-transform">
-                  View Details <ArrowRight className="h-4 w-4 ml-2" />
-                </span>
               </div>
             </FadeInSection>
           ))}
@@ -499,7 +537,7 @@ const CTASection = ({ onNavigate }) => (
 
 // --- Pages: Legal Mockups ---
 const LegalLayout = ({ title, children, icon: Icon }) => (
-  <div className="min-h-screen bg-[#001222] pt-32 pb-20">
+  <div className="min-h-screen bg-[#051e36] pt-32 pb-20">
     <GlobalStyles />
     <div className="max-w-4xl mx-auto px-4 sm:px-6">
       <div className="text-center mb-16">
@@ -519,7 +557,7 @@ const TermsPage = () => (
     <h3>1. Introduction</h3>
     <p>Welcome to Counter 88. By using our shipping and logistics services, you agree to these terms. These terms govern the relationship between you (the Client) and Counter 88 Global Logistics.</p>
     <h3>2. Shipping & Liability</h3>
-    <p>While we strive for 100% security and timeliness, international shipping is subject to customs and regulations beyond our control. Our liability is limited to the terms specified in your Bill of Lading.</p>
+    <p>While we strive for 100% security and timeliness, international shipping is subject to customs and regulations beyond our control. Our liability is limited to the terms specified in your Bill of Lading (BL).</p>
     <h3>3. Payment Terms</h3>
     <p>All quotes are valid for 14 days. Full payment is required prior to the release of cargo at the destination port unless a credit agreement is in place.</p>
   </LegalLayout>
@@ -556,7 +594,7 @@ const ContactPage = () => {
   const handleChange = (e) => setFormData({...formData, [e.target.name]: e.target.value});
 
   return (
-    <div className="min-h-screen bg-[#001222] pt-32 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-[#051e36] pt-32 pb-20 relative overflow-hidden">
       <GlobalStyles />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none">
          <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600/10 rounded-full blur-[100px]"></div>
@@ -574,28 +612,32 @@ const ContactPage = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-             {/* Contact Info Cards */}
              <div className="grid gap-6">
-               {[
-                 { label: "Official Email", val: "info@counter-88.com", icon: Mail },
-                 { label: "24/7 Support", val: "+961 71 240 329", icon: Phone },
-               ].map((item, i) => (
-                 <div key={i} className="glass-panel p-6 rounded-2xl flex items-center group hover:bg-white/5 transition-colors">
-                   <div className="p-4 rounded-xl bg-[#001222] mr-6 border border-white/10 text-[#D4AF37] group-hover:text-white transition-colors flex-shrink-0">
-                     <item.icon className="h-6 w-6" />
-                   </div>
-                   <div className="overflow-hidden">
-                     <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">{item.label}</p>
-                     <p className="text-lg md:text-xl font-bold text-white mt-1 truncate">{item.val}</p>
-                   </div>
+               <div className="glass-panel p-6 rounded-2xl flex items-center group hover:bg-white/5 transition-colors">
+                 <div className="p-4 rounded-xl bg-[#031221] mr-6 border border-white/10 text-[#D4AF37] group-hover:text-white transition-colors flex-shrink-0">
+                   <Mail className="h-6 w-6" />
                  </div>
-               ))}
+                 <div className="overflow-hidden">
+                   <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Official Email</p>
+                   <SecureReveal label="Email" value="info@counter-88.com" type="email" className="text-lg md:text-xl font-bold text-white mt-1" />
+                 </div>
+               </div>
+               
+               <div className="glass-panel p-6 rounded-2xl flex items-center group hover:bg-white/5 transition-colors">
+                 <div className="p-4 rounded-xl bg-[#031221] mr-6 border border-white/10 text-[#D4AF37] group-hover:text-white transition-colors flex-shrink-0">
+                   <Phone className="h-6 w-6" />
+                 </div>
+                 <div className="overflow-hidden">
+                   <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">24/7 Support</p>
+                   <SecureReveal label="Number" value="+961 76 985 828" type="phone" className="text-lg md:text-xl font-bold text-white mt-1" />
+                 </div>
+               </div>
              </div>
 
              {/* Locations & Maps */}
              <div className="glass-panel p-6 md:p-8 rounded-2xl">
                <div className="flex items-center mb-6">
-                 <div className="p-4 rounded-xl bg-[#001222] mr-6 border border-white/10 text-[#DC2626]">
+                 <div className="p-4 rounded-xl bg-[#031221] mr-6 border border-white/10 text-[#DC2626]">
                     <MapPin className="h-6 w-6" />
                  </div>
                  <h3 className="text-xl font-bold text-white">Headquarters</h3>
@@ -607,7 +649,7 @@ const ContactPage = () => {
                    <p className="text-slate-300 mb-3">Elissar Main Road, Metn, Lebanon</p>
                    <div className="rounded-xl overflow-hidden h-48 md:h-56 w-full border border-white/10">
                      <iframe 
-                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3311.458368805868!2d35.5864!3d33.9036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f3f0000000001%3A0x0!2sElissar%2C%20Lebanon!5e0!3m2!1sen!2slb!4v1600000000000" 
+                       src="https://maps.google.com/maps?q=33.9271328,35.6240338&t=&z=15&ie=UTF8&iwloc=&output=embed"
                        width="100%" 
                        height="100%" 
                        style={{border:0}} 
@@ -653,21 +695,21 @@ const ContactPage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="w-full">
                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" htmlFor="name">Name</label>
-                    <input id="name" required name="name" onChange={handleChange} placeholder="Your Name" className="w-full px-6 py-4 bg-[#001222]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600" />
+                    <input id="name" required name="name" onChange={handleChange} placeholder="Your Name" className="w-full px-6 py-4 bg-[#051e36]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600" />
                   </div>
                   <div className="w-full">
                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" htmlFor="company">Company</label>
-                    <input id="company" name="company" onChange={handleChange} placeholder="Company Name" className="w-full px-6 py-4 bg-[#001222]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600" />
+                    <input id="company" name="company" onChange={handleChange} placeholder="Company Name" className="w-full px-6 py-4 bg-[#051e36]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600" />
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="w-full">
                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" htmlFor="email">Email</label>
-                    <input id="email" required name="email" onChange={handleChange} placeholder="Email Address" type="email" className="w-full px-6 py-4 bg-[#001222]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600" />
+                    <input id="email" required name="email" onChange={handleChange} placeholder="Email Address" type="email" className="w-full px-6 py-4 bg-[#051e36]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600" />
                   </div>
                   <div className="w-full">
                     <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" htmlFor="service">Service</label>
-                    <select id="service" name="service" onChange={handleChange} className="w-full px-6 py-4 bg-[#001222]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all appearance-none">
+                    <select id="service" name="service" onChange={handleChange} className="w-full px-6 py-4 bg-[#051e36]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all appearance-none">
                       <option value="ocean">Ocean Freight</option>
                       <option value="air">Air Freight</option>
                       <option value="road">Road Transport</option>
@@ -678,7 +720,7 @@ const ContactPage = () => {
                 </div>
                 <div className="w-full">
                   <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" htmlFor="message">Message</label>
-                  <textarea id="message" required name="message" onChange={handleChange} rows="4" placeholder="Cargo details, destination..." className="w-full px-6 py-4 bg-[#001222]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600"></textarea>
+                  <textarea id="message" required name="message" onChange={handleChange} rows="4" placeholder="Cargo details, destination..." className="w-full px-6 py-4 bg-[#051e36]/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600"></textarea>
                 </div>
                 <button type="submit" className="w-full py-5 bg-gradient-to-r from-[#DC2626] to-[#991B1B] rounded-xl font-bold text-white uppercase tracking-widest hover:shadow-lg hover:scale-[1.02] transition-all">Send Request</button>
               </form>
@@ -691,18 +733,12 @@ const ContactPage = () => {
 };
 
 const Footer = ({ onNavigate }) => (
-  <footer className="bg-[#000a14] text-slate-400 py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
+  <footer className="bg-[#02121f] text-slate-400 py-16 md:py-20 border-t border-white/5 relative overflow-hidden">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16">
-        <div className="space-y-6">
-          <h3 className="text-white font-bold uppercase text-sm tracking-widest">Newsletter</h3>
-          <p className="text-sm leading-relaxed">Join our secure network for industry alerts.</p>
-          <form className="flex flex-col space-y-3" onSubmit={(e) => { e.preventDefault(); alert('Subscribed!'); }}>
-            <input type="email" placeholder="Email address" className="bg-white/5 border border-white/10 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-[#D4AF37] transition-colors" required />
-            <button type="submit" className="bg-[#D4AF37] hover:bg-[#bfa035] text-[#001222] px-4 py-3 rounded-lg font-bold uppercase text-xs tracking-widest transition-colors">Subscribe</button>
-          </form>
-        </div>
-
+      {/* Updated Footer Layout: 3 Columns, Removed Newsletter */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+        
+        {/* Services Column */}
         <div>
           <h3 className="text-white font-bold uppercase text-sm tracking-widest mb-6">Services</h3>
           <ul className="space-y-4 text-sm">
@@ -712,6 +748,7 @@ const Footer = ({ onNavigate }) => (
           </ul>
         </div>
 
+        {/* Company Column */}
         <div>
           <h3 className="text-white font-bold uppercase text-sm tracking-widest mb-6">Company</h3>
           <ul className="space-y-4 text-sm">
@@ -721,15 +758,35 @@ const Footer = ({ onNavigate }) => (
           </ul>
         </div>
 
+        {/* Contact/Socials Column */}
         <div>
            <div className="flex items-center space-x-3 text-white mb-6">
             <Logo88 className="h-8 w-20" />
             <span className="text-xl font-bold">COUNTER <span className="text-[#D4AF37]">88</span></span>
           </div>
-          <ul className="space-y-4 text-sm">
-             <li className="flex items-center"><Mail className="h-4 w-4 text-[#D4AF37] mr-3" /><span className="break-all">info@counter-88.com</span></li>
-             <li className="flex items-center"><Phone className="h-4 w-4 text-[#D4AF37] mr-3" /><span>+961 71 240 329</span></li>
-          </ul>
+          <div className="space-y-4 text-sm mb-8">
+             <div className="flex items-center">
+               <Mail className="h-4 w-4 text-[#D4AF37] mr-3 flex-shrink-0" />
+               <SecureReveal label="Email" value="info@counter-88.com" type="email" className="text-slate-400 hover:text-[#D4AF37]" />
+             </div>
+             <div className="flex items-center">
+               <Phone className="h-4 w-4 text-[#D4AF37] mr-3 flex-shrink-0" />
+               <SecureReveal label="Number" value="+961 76 985 828" type="phone" className="text-slate-400 hover:text-[#D4AF37]" />
+             </div>
+          </div>
+          
+          {/* Social Media Icons */}
+          <div className="flex space-x-6">
+            <a href="https://www.instagram.com/counter.88?igsh=dGoxazJtbG5yOHZ3" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
+              <Instagram className="h-6 w-6" />
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
+              <Facebook className="h-6 w-6" />
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
+              <Linkedin className="h-6 w-6" />
+            </a>
+          </div>
         </div>
       </div>
       
@@ -760,7 +817,7 @@ const App = () => {
           <HeroSection onNavigate={setCurrentPage} />
           <ServicesSection />
           <ProcessSection />
-          <TrustSection />
+          <AboutSection />
           <CTASection onNavigate={setCurrentPage} />
         </>
       );
@@ -768,7 +825,7 @@ const App = () => {
   };
 
   return (
-    <div className="font-sans bg-[#001222] text-slate-300 selection:bg-[#D4AF37] selection:text-[#001222]">
+    <div className="font-sans bg-[#051e36] text-slate-300 selection:bg-[#D4AF37] selection:text-[#001222]">
       <GlobalStyles />
       <SEOHead page={currentPage} />
       <Navigation onNavigate={setCurrentPage} currentPage={currentPage} />
