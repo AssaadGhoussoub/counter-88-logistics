@@ -30,11 +30,11 @@ Globe
 
 /**
 * COUNTER 88 GLOBAL LOGISTICS
-https://www.crosshairx2.com/#A/
+https://www.clair-obscur-33.com/#A/
 * Style: Modern Fintech/Tech inspired
 */
 
-// --- Styles for Animations ---
+// --- Styles for Animations & Utilities ---
 const GlobalStyles = () => (
 <style>{`
 @keyframes float {
@@ -43,30 +43,30 @@ const GlobalStyles = () => (
 100% { transform: translateY(0px); }
 }
 @keyframes pulse-glow {
-https://ovr-advanced-settings.com/#A/
+https://www.ovr-toolkit.com/#A/
 https://www.arksurvival-ascended.com/#A/
 }
 @keyframes fade-up {
 from { opacity: 0; transform: translateY(20px); }
 to { opacity: 1; transform: translateY(0); }
 }
-https://omsi-2.com/#A/
-https://www.arksurvival-ascended.com/#A/
 https://www.crosshair-x.com/#A/
-https://omsi-2.com/#A/
+https://www.arma-reforger.com/#A/
+https://www.crosshair-x.com/#A/
+https://www.crusader-kings.com/#A/
 backdrop-filter: blur(16px);
 -webkit-backdrop-filter: blur(16px);
-https://www.crusader-kings.com/#A/
-}
-https://www.elden-ringnightreign.com/#A/
-https://www.clair-obscur-33.com/#A/
-https://www.crosshairx.net/#A/
-https://www.arma-reforger.com/#A/
-}
 https://www.crosshairx2.com/#A/
-https://www.crosshairxv2.com/#A/
 }
-/* Ensure inputs don't zoom on mobile */
+https://www.crosshairxv2.com/#A/
+https://www.monster-hunterwilds.com/#A/
+https://www.crosshairx2.com/#A/
+https://omsi-2.com/#A/
+}
+https://www.clair-obscur-33.com/#A/
+https://ovr-advanced-settings.com/#A/
+}
+/* Ensure inputs don't zoom on mobile by setting font-size to 16px */
 input, select, textarea {
 font-size: 16px !important;
 }
@@ -76,26 +76,21 @@ scroll-behavior: smooth;
 `}</style>
 );
 
-// --- Custom Logo (Exact Color Match) ---
+// --- Custom Logo ---
 const Logo88 = ({ className }) => (
 <svg viewBox="0 0 100 40" className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
 {/* Wings - Gold body with Red stripe */}
 <path d="M5 20 L 35 20 L 35 18 L 5 18 Z" fill="#D4AF37" />
 <path d="M65 20 L 95 20 L 95 18 L 65 18 Z" fill="#D4AF37" />
-
 <path d="M5 19 H 35" stroke="#DC2626" strokeWidth="1" />
 <path d="M65 19 H 95" stroke="#DC2626" strokeWidth="1" />
-
 {/* Interlocking Rings '88' - Blue Fill, Red Border */}
-{/* Top-Left Ring */}
-https://www.clair-obscur-33.com/#A/>
-
-{/* Bottom-Right Ring */}
-https://omsi-2.com/#A/>
+https://www.crosshairx2.com/#A/>
+https://www.crosshair-x.com/#A/>
 </svg>
 );
 
-// SVG String for Favicon (Minified version of Logo88)
+// SVG String for Favicon
 const faviconSVG = `data:image/svg+xml,<svg viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20 L 35 20 L 35 18 L 5 18 Z" fill="%23D4AF37"/><path d="M65 20 L 95 20 L 95 18 L 65 18 Z" fill="%23D4AF37"/><path d="M5 19 H 35" stroke="%23DC2626" stroke-width="1"/><path d="M65 19 H 95" stroke="%23DC2626" stroke-width="1"/><circle cx="42" cy="16" r="9" fill="%230047AB" stroke="%23DC2626" stroke-width="2.5"/><circle cx="58" cy="24" r="9" fill="%230047AB" stroke="%23DC2626" stroke-width="2.5"/></svg>`;
 
 // --- Intersection Observer Hook ---
@@ -103,11 +98,11 @@ const useOnScreen = (ref) => {
 const [isIntersecting, setIntersecting] = useState(false);
 useEffect(() => {
 const observer = new IntersectionObserver(
-https://www.crusader-kings.com/#A/
-https://www.ovr-toolkit.com/#A/
-);
-https://www.crosshairxv2.com/#A/
 https://ovr-advanced-settings.com/#A/
+https://omsi-2.com/#A/
+);
+https://apexlegends.org/#A/
+https://www.crosshairx2.com/#A/
 }, []);
 return isIntersecting;
 };
@@ -128,7 +123,6 @@ style={style}
 
 const SEOHead = ({ page }) => {
 useEffect(() => {
-// Set Title
 let title = 'Counter 88 Global Logistics';
 switch(page) {
 case 'contact': title += ' | Contact Us'; break;
@@ -137,16 +131,16 @@ case 'privacy': title += ' | Privacy Policy'; break;
 case 'cookies': title += ' | Cookie Policy'; break;
 default: title += ' | Secure Shipping';
 }
-https://rdr2-official.com/#A/
+https://www.arksurvival-ascended.com/#A/
 
-// Set Favicon dynamically
-https://www.ready-ornot.com/#A/
-https://www.crusader-kings.com/#A/svg+xml';
-https://www.crosshair-x.com/#A/
+// Set Favicon
 https://apexlegends.org/#A/
-https://ovr-advanced-settings.com/#A/
+https://www.crosshairx2.com/#A/svg+xml';
+https://www.crosshairxv2.com/#A/
+https://www.arksurvival-ascended.com/#A/
+https://www.elden-ringnightreign.com/#A/
 
-https://www.ready-ornot.com/#A/
+https://www.arksurvival-ascended.com/#A/
 }, [page]);
 return null;
 };
@@ -156,8 +150,8 @@ const [isOpen, setIsOpen] = useState(false);
 const [scrolled, setScrolled] = useState(false);
 
 useEffect(() => {
-https://fernbus-simulator.com/#A/
-https://www.monster-hunterwilds.com/#A/
+https://www.crosshairx2.com/#A/
+https://www.ovr-toolkit.com/#A/
 https://www.arma-reforger.com/#A/
 }, []);
 
@@ -170,11 +164,10 @@ const navLinks = [
 const handleNavClick = (id) => {
 onNavigate('home');
 setIsOpen(false);
-// Increased delay to 300ms to allow mobile devices to re-render the Home view before scrolling
 setTimeout(() => {
-https://www.elden-ringnightreign.com/#A/
+https://www.crosshairx.net/#A/
 if (element) {
-https://www.ovr-toolkit.com/#A/
+https://rdr2-official.com/#A/
 }
 }, 300);
 };
@@ -192,21 +185,21 @@ COUNTER <span className="text-[#D4AF37]">88</span>
 
 {/* Desktop Nav */}
 <div className="hidden md:flex items-center space-x-8">
-https://www.crusader-kings.com/#A/
-<button
-https://fernbus-simulator.com/#A/
 https://www.ovr-toolkit.com/#A/
+<button
+https://www.crosshair-x.com/#A/
+https://www.crosshair-x.com/#A/
 className="font-medium text-sm text-slate-300 hover:text-white hover:scale-105 transition-all duration-300 uppercase tracking-wider"
 >
-https://www.crosshairx2.com/#A/
+https://www.crosshair-x.com/#A/
 </button>
 ))}
 <button
 onClick={() => onNavigate('contact')}
-https://www.monster-hunterwilds.com/#A/
+https://www.crosshairx.net/#A/
 currentPage === 'contact'
 ? 'bg-white/10 text-slate-400 border border-white/10'
-https://www.arma-reforger.com/#A/
+https://www.clair-obscur-33.com/#A/
 }`}
 >
 Contact Us
@@ -229,13 +222,13 @@ aria-label="Toggle menu"
 {/* Mobile Menu Overlay */}
 <div className={`fixed inset-0 bg-[#051e36]/98 backdrop-blur-2xl z-40 transition-transform duration-300 md:hidden flex flex-col justify-start pt-32 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
 <div className="px-8 space-y-8">
-https://www.elden-ringnightreign.com/#A/
+https://www.crosshairxv2.com/#A/
 <button
-https://apexlegends.org/#A/
-https://rdr2-official.com/#A/
+https://www.crosshair-x.com/#A/
+https://www.monster-hunterwilds.com/#A/
 className="block w-full text-left text-3xl font-bold text-white hover:text-[#D4AF37] transition-colors border-b border-white/5 pb-4"
 >
-https://www.arma-reforger.com/#A/
+https://www.ovr-toolkit.com/#A/
 </button>
 ))}
 <div className="pt-4">
@@ -265,7 +258,7 @@ const [currentImage, setCurrentImage] = useState(0);
 
 useEffect(() => {
 const timer = setInterval(() => {
-https://www.crosshairxv2.com/#A/
+https://www.crosshairx.net/#A/
 }, 5000);
 return () => clearInterval(timer);
 }, []);
@@ -273,7 +266,7 @@ return () => clearInterval(timer);
 return (
 <section className="relative min-h-screen overflow-hidden bg-[#051e36] flex flex-col justify-center py-20 lg:py-0">
 {/* Carousel Layer */}
-https://www.crosshairxv2.com/#A/
+https://www.elden-ringnightreign.com/#A/
 <div
 key={index}
 className={`absolute inset-0 transition-all duration-1000 ease-in-out transform ${index === currentImage ? 'opacity-60 scale-100' : 'opacity-0 scale-110'}`}
@@ -292,34 +285,34 @@ className="w-full h-full object-cover"
 <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-[#D4AF37]/10 rounded-full blur-[60px] sm:blur-[80px] animate-float z-0"></div>
 
 <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-center">
-{/* Increased top padding for mobile and desktop to clear fixed header */}
-<div className="max-w-3xl pt-32 sm:pt-28">
+{/* Increased top padding for mobile to ensure content clears fixed header without overlap */}
+<div className="max-w-3xl pt-36 sm:pt-28 pb-12">
 
 <div className="inline-flex items-center space-x-3 glass-panel rounded-full pl-2 pr-6 py-2 mb-8 animate-fade-up border border-[#D4AF37]/30" style={{animationDelay: '0.1s'}}>
-https://www.arksurvival-ascended.com/#A/
+https://www.crosshair-x.com/#A/
 <Award className="h-4 w-4" />
 </div>
 <div className="flex flex-col">
 <span className="text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest leading-none">Since 2005</span>
-https://www.elden-ringnightreign.com/#A/span>
+https://apexlegends.org/#A/span>
 </div>
 </div>
 
-https://www.crosshairxv2.com/#A/
+https://www.crosshair-x.com/#A/
 Logistics Built on <br />
 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#FCD34D] to-[#D4AF37] text-glow">
 Trust & Transparency
 </span>
 </h1>
 
-https://www.arma-reforger.com/#A/
-https://rdr2-official.com/#A/
+https://fernbus-simulator.com/#A/
+https://fernbus-simulator.com/#A/
 </p>
 
-https://www.crusader-kings.com/#A/
+https://www.arma-reforger.com/#A/
 <button
 onClick={() => onNavigate('contact')}
-https://ovr-advanced-settings.com/#A/
+https://www.crusader-kings.com/#A/
 >
 <span className="relative z-10 flex items-center justify-center sm:justify-start">
 Let us Assist you <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -329,8 +322,8 @@ Let us Assist you <ArrowRight className="ml-2 h-5 w-5 transition-transform group
 
 <button
 onClick={() => {
-https://www.crosshairx.net/#A/
-https://ovr-advanced-settings.com/#A/
+https://www.monster-hunterwilds.com/#A/
+https://www.elden-ringnightreign.com/#A/
 }}
 className="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-bold uppercase tracking-wider rounded-full hover:bg-white/10 hover:border-white/40 transition-all backdrop-blur-sm"
 >
@@ -338,7 +331,7 @@ Explore Services
 </button>
 </div>
 
-https://www.clair-obscur-33.com/#A/
+https://ovr-advanced-settings.com/#A/
 <Lock className="h-3 w-3 mr-2 text-[#D4AF37]" /> 256-Bit SSL Encrypted Connection
 </div>
 </div>
@@ -349,11 +342,11 @@ https://www.clair-obscur-33.com/#A/
 
 const ProcessSection = () => {
 const steps = [
-https://www.monster-hunterwilds.com/#A/
-https://fernbus-simulator.com/#A/
-https://www.arma-reforger.com/#A/
 https://apexlegends.org/#A/
+https://apexlegends.org/#A/
+https://omsi-2.com/#A/
 https://www.arma-reforger.com/#A/
+https://fernbus-simulator.com/#A/
 ];
 
 return (
@@ -369,16 +362,16 @@ return (
 </FadeInSection>
 
 <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-6">
-https://rdr2-official.com/#A/
+https://www.clair-obscur-33.com/#A/
 <FadeInSection key={idx} className="h-full" style={{transitionDelay: `${idx * 100}ms`}}>
 <div className="glass-panel p-8 rounded-2xl h-full relative group glass-card transition-all duration-500">
 <div className="absolute -top-6 left-6 bg-[#051e36] border border-[#D4AF37]/30 text-[#D4AF37] w-12 h-12 flex items-center justify-center rounded-full text-xl font-bold group-hover:bg-[#D4AF37] group-hover:text-[#051e36] transition-all shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-https://www.crosshair-x.com/#A/>
+https://apexlegends.org/#A/>
 </div>
-https://ovr-advanced-settings.com/#A/h3>
-https://www.crosshair-x.com/#A/p>
+https://www.monster-hunterwilds.com/#A/h3>
+https://www.monster-hunterwilds.com/#A/p>
 
-https://apexlegends.org/#A/
+https://www.crosshair-x.com/#A/
 <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10 text-slate-700">
 <ChevronRight className="h-6 w-6" />
 </div>
@@ -409,17 +402,17 @@ Counter <span className="text-[#D4AF37]">88</span>
 </div>
 
 <p className="text-white text-xl md:text-2xl font-semibold mb-6 leading-relaxed">
-https://www.arma-reforger.com/#A/
-https://www.elden-ringnightreign.com/#A/span>
+https://rdr2-official.com/#A/
+https://www.crosshairx2.com/#A/span>
 </p>
 
 <p className="text-slate-400 mb-10 text-lg leading-relaxed border-l-4 border-white/10 pl-6">
-https://www.crosshairxv2.com/#A/>
+https://www.arma-reforger.com/#A/>
 <span className="text-white mt-2 block">Backed by <strong className="text-[#D4AF37]">C-Sky China</strong> — 20 years experience.</span>
 </p>
 
 <div className="inline-block px-6 py-3 rounded-xl bg-white/5 border border-white/10">
-https://apexlegends.org/#A/span>
+https://www.arksurvival-ascended.com/#A/span>
 </div>
 </FadeInSection>
 
@@ -434,10 +427,10 @@ https://apexlegends.org/#A/span>
 <ul className="space-y-5">
 {[
 "We NEVER ask for Crypto/Gift Card payments.",
-https://www.crosshairxv2.com/#A/
+https://www.ovr-toolkit.com/#A/
 https://rdr2-official.com/#A/
-https://www.crosshairxv2.com/#A/
 https://www.crusader-kings.com/#A/
+https://www.crosshair-x.com/#A/
 <li key={i} className="flex items-start text-slate-300">
 <span className="w-2 h-2 bg-[#DC2626] rounded-full mr-4 mt-2 shadow-[0_0_10px_#DC2626] flex-shrink-0"></span>
 <span>{tip}</span>
@@ -457,7 +450,7 @@ const ChinaReachGraphicBg = () => (
 <div className="absolute inset-0 z-0 opacity-20 pointer-events-none overflow-hidden flex items-center justify-center">
 {/* Central World Map Base (Abstract) */}
 <div className="absolute inset-0 flex items-center justify-center">
-https://www.monster-hunterwilds.com/#A/>
+https://fernbus-simulator.com/#A/>
 </div>
 
 {/* Graphic Content Container */}
@@ -468,7 +461,7 @@ https://www.monster-hunterwilds.com/#A/>
 <path d="M0,0 L6,2 L0,4 Z" fill="#D4AF37" />
 </marker>
 <filter id="glow-bg">
-https://www.crosshairxv2.com/#A/>
+https://www.crosshair-x.com/#A/>
 <feMerge>
 <feMergeNode in="coloredBlur"/>
 <feMergeNode in="SourceGraphic"/>
@@ -480,26 +473,26 @@ https://www.crosshairxv2.com/#A/>
 
 {/* Arrows radiating from China */}
 {/* To North America (West across Pacific) */}
-https://www.arksurvival-ascended.com/#A/>
+https://www.monster-hunterwilds.com/#A/>
 {/* Wrap around visual implication */}
 https://www.crosshair-x.com/#A/>
 
 {/* To Europe (West) */}
-https://www.arksurvival-ascended.com/#A/>
+https://www.monster-hunterwilds.com/#A/>
 
 {/* To Middle East (West/South) */}
 <path d="M 550 150 Q 450 200 420 190" fill="none" stroke="#D4AF37" strokeWidth="2" markerEnd="url(#arrowhead-bg)" strokeDasharray="6,6" className="animate-pulse" style={{animationDelay: '1s'}} />
 
 {/* To Africa (South West) */}
-https://www.crosshair-x.com/#A/>
+https://www.crosshairx2.com/#A/>
 
 {/* To Australia (South) */}
-https://www.clair-obscur-33.com/#A/>
+https://www.elden-ringnightreign.com/#A/>
 
 {/* China Marker */}
 <circle cx="550" cy="150" r="10" fill="#DC2626" stroke="#D4AF37" strokeWidth="2" filter="url(#glow-bg)" />
 {/* Label with Flag Emoji */}
-https://www.ovr-toolkit.com/#A/
+https://www.crosshairx2.com/#A/
 🇨🇳 CHINA
 </text>
 </svg>
@@ -517,7 +510,7 @@ description: "Secure FCL/LCL container shipping with tamper-proof seal verificat
 {
 icon: Plane,
 title: "Air Freight",
-https://www.crosshair-x.com/#A/
+https://www.crosshairxv2.com/#A/
 },
 {
 icon: Truck,
@@ -540,15 +533,15 @@ return (
 </FadeInSection>
 
 <div className="grid md:grid-cols-3 gap-8">
-https://www.ready-ornot.com/#A/
+https://rdr2-official.com/#A/
 <FadeInSection key={index} style={{transitionDelay: `${index * 100}ms`}}>
 <div className="glass-panel p-8 md:p-10 rounded-3xl h-full glass-card group transition-all duration-500 cursor-pointer">
 <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 border border-white/10 group-hover:border-[#D4AF37]/50">
-https://www.crusader-kings.com/#A/>
+https://www.ovr-toolkit.com/#A/>
 </div>
-https://www.arma-reforger.com/#A/h3>
+https://fernbus-simulator.com/#A/h3>
 <p className="text-slate-400 leading-relaxed">
-https://www.crosshairx.net/#A/
+https://apexlegends.org/#A/
 </p>
 </div>
 </FadeInSection>
@@ -566,13 +559,13 @@ const CTASection = ({ onNavigate }) => (
 
 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
 <FadeInSection>
-https://www.clair-obscur-33.com/#A/h2>
+https://www.crosshairx.net/#A/h2>
 <p className="text-red-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto px-4">
-https://omsi-2.com/#A/
+https://www.elden-ringnightreign.com/#A/
 </p>
 <button
 onClick={() => onNavigate('contact')}
-https://www.crosshairxv2.com/#A/
+https://rdr2-official.com/#A/
 >
 Let us Assist you
 </button>
@@ -600,30 +593,30 @@ const LegalLayout = ({ title, children, icon: Icon }) => (
 
 const TermsPage = () => (
 <LegalLayout title="Terms of Service" icon={FileText}>
+https://www.clair-obscur-33.com/#A/h3>
+https://www.arksurvival-ascended.com/#A/p>
 https://www.crosshairx.net/#A/h3>
-https://www.ovr-toolkit.com/#A/p>
-https://www.arma-reforger.com/#A/h3>
-https://ovr-advanced-settings.com/#A/p>
-https://www.arma-reforger.com/#A/h3>
-https://www.crosshair-x.com/#A/p>
+https://www.elden-ringnightreign.com/#A/p>
+https://www.elden-ringnightreign.com/#A/h3>
+https://www.crosshairxv2.com/#A/p>
 </LegalLayout>
 );
 
 const PrivacyPage = () => (
 <LegalLayout title="Privacy Policy" icon={Eye}>
 <h3>Data Collection</h3>
-https://www.arma-reforger.com/#A/p>
+https://www.arksurvival-ascended.com/#A/p>
 <h3>Security</h3>
-https://www.crosshairx2.com/#A/p>
+https://www.ready-ornot.com/#A/p>
 </LegalLayout>
 );
 
 const CookiesPage = () => (
 <LegalLayout title="Cookie Policy" icon={Cookie}>
 <h3>Use of Cookies</h3>
-https://rdr2-official.com/#A/p>
+https://www.ready-ornot.com/#A/p>
 <h3>Managing Preferences</h3>
-https://www.crosshairxv2.com/#A/p>
+https://www.clair-obscur-33.com/#A/p>
 </LegalLayout>
 );
 
@@ -633,11 +626,11 @@ const [formData, setFormData] = useState({ name: '', email: '', company: '', ser
 const [submitted, setSubmitted] = useState(false);
 
 const handleSubmit = (e) => {
-https://rdr2-official.com/#A/
+https://www.ovr-toolkit.com/#A/
 setTimeout(() => setSubmitted(true), 1000);
 };
 
-https://www.crosshairx.net/#A/
+https://www.elden-ringnightreign.com/#A/
 
 return (
 <div className="min-h-screen bg-[#051e36] pt-32 pb-20 relative overflow-hidden">
@@ -665,7 +658,7 @@ Our global team is available 24/7 to verify shipments and provide quotes.
 </div>
 <div className="overflow-hidden">
 <p className="text-xs text-slate-500 font-bold uppercase tracking-widest">Official Email</p>
-https://www.crosshairxv2.com/#A/
+https://fernbus-simulator.com/#A/
 Email Us
 </a>
 </div>
@@ -736,7 +729,7 @@ title="China Office Map"
 <CheckCircle className="h-10 w-10 text-green-500" />
 </div>
 <h4 className="text-2xl font-bold text-white mb-2">Request Received</h4>
-https://www.arma-reforger.com/#A/p>
+https://www.crusader-kings.com/#A/p>
 <button onClick={() => setSubmitted(false)} className="text-[#D4AF37] font-bold hover:underline">Send another</button>
 </div>
 ) : (
@@ -770,9 +763,9 @@ https://www.arma-reforger.com/#A/p>
 </div>
 <div className="w-full">
 <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2" htmlFor="message">Message</label>
-https://www.arksurvival-ascended.com/#A/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600"></textarea>
+https://www.monster-hunterwilds.com/#A/50 rounded-xl border border-white/10 text-white focus:border-[#D4AF37] outline-none transition-all placeholder-slate-600"></textarea>
 </div>
-https://www.ovr-toolkit.com/#A/button>
+https://apexlegends.org/#A/button>
 </form>
 )}
 </div>
@@ -788,13 +781,13 @@ const handleFooterLink = (page, sectionId) => {
 onNavigate(page);
 if (sectionId) {
 setTimeout(() => {
-https://www.crosshairx.net/#A/
+https://omsi-2.com/#A/
 if (element) {
-https://www.arksurvival-ascended.com/#A/
+https://www.crusader-kings.com/#A/
 }
 }, 300);
 } else {
-https://www.monster-hunterwilds.com/#A/
+https://rdr2-official.com/#A/
 }
 };
 
@@ -832,7 +825,7 @@ return (
 <div className="space-y-4 text-sm mb-8">
 <div className="flex items-center">
 <Mail className="h-4 w-4 text-[#D4AF37] mr-3 flex-shrink-0" />
-https://www.arma-reforger.com/#A/
+https://www.clair-obscur-33.com/#A/
 Email Us
 </a>
 </div>
@@ -860,7 +853,7 @@ Call Us
 </div>
 
 <div className="border-t border-white/5 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-600 gap-4">
-https://www.ready-ornot.com/#A/p>
+https://www.crosshairx.net/#A/p>
 <div className="flex space-x-8">
 <button onClick={() => handleFooterLink('terms')} className="hover:text-white transition-colors">Terms</button>
 <button onClick={() => handleFooterLink('privacy')} className="hover:text-white transition-colors">Privacy</button>
