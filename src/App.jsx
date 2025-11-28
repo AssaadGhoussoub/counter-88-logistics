@@ -142,7 +142,7 @@ const SEOHead = ({ page }) => {
       case 'contact': title += ' | Contact Us'; break;
       case 'terms': title += ' | Terms of Service'; break;
       case 'privacy': title += ' | Privacy Policy'; break;
-      case 'cookie': title += ' | Cookie Policy'; break;
+      case 'cookies': title += ' | Cookie Policy'; break;
       default: title += ' | Secure Shipping';
     }
     document.title = title;
@@ -151,7 +151,7 @@ const SEOHead = ({ page }) => {
     const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
     link.type = 'image/png';
     link.rel = 'icon';
-    link.href = 'counter88.png'; 
+    link.href = '/images/counter88.png'; 
     document.getElementsByTagName('head')[0].appendChild(link);
 
     window.scrollTo(0, 0);
@@ -193,7 +193,7 @@ const Navigation = ({ onNavigate, currentPage }) => {
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
             {/* LOGO IMAGE - Ensure counter88.png is in /public folder */}
             <img 
-              src="counter88.png" 
+              src="/images/counter88.png" 
               alt="Counter 88 Logo" 
               className="h-32 sm:h-40 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
