@@ -195,7 +195,7 @@ const Navigation = ({ onNavigate, currentPage }) => {
             <img 
               src="counter.88.png" 
               alt="Counter 88 Logo" 
-              className="h-16 sm:h-20 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
+              className="h-32 sm:h-40 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
             />
           </button>
@@ -818,7 +818,7 @@ const Footer = ({ onNavigate }) => {
              <div className="flex items-center space-x-3 text-white mb-6">
               {/* Ensure 'counter.88.png' is in your public folder */}
               <img 
-                src="counter.88.png" 
+                src="" 
                 alt="Counter 88 Logo" 
                 className="h-8 w-auto"
                 onError={(e) => {
