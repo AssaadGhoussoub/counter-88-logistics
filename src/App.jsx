@@ -142,7 +142,7 @@ const SEOHead = ({ page }) => {
       case 'contact': title += ' | Contact Us'; break;
       case 'terms': title += ' | Terms of Service'; break;
       case 'privacy': title += ' | Privacy Policy'; break;
-      case 'cookies': title += ' | Cookie Policy'; break;
+      case 'cookie': title += ' | Cookie Policy'; break;
       default: title += ' | Secure Shipping';
     }
     document.title = title;
