@@ -30,8 +30,9 @@ import {
 
 /**
  * COUNTER 88 GLOBAL LOGISTICS
- * Version: 3.2 (Map Update)
- * Style: Modern Fintech/Tech inspired
+ * Version: 3.5 (Final - PNG Logo Only)
+ * Dependencies: lucide-react, tailwindcss
+ * Assets Required: public/counter.88.png
  */
 
 // --- Styles for Animations & Utilities ---
@@ -146,11 +147,11 @@ const SEOHead = ({ page }) => {
     }
     document.title = title;
     
-    // Set Favicon using the uploaded PNG
+    // Set Favicon using the PNG logo
     const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
     link.type = 'image/png';
     link.rel = 'icon';
-    link.href = 'counter.88.png';
+    link.href = 'counter.88.png'; 
     document.getElementsByTagName('head')[0].appendChild(link);
 
     window.scrollTo(0, 0);
@@ -188,20 +189,15 @@ const Navigation = ({ onNavigate, currentPage }) => {
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#051e36]/95 backdrop-blur-xl border-b border-white/5 shadow-2xl' : 'bg-gradient-to-b from-[#051e36]/80 to-transparent py-4 sm:py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-20">
+        <div className="flex justify-between items-center h-20 sm:h-24">
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
+            {/* LOGO IMAGE - Ensure counter.88.png is in /public folder */}
             <img 
               src="counter.88.png" 
               alt="Counter 88 Logo" 
-              className="h-12 sm:h-16 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                e.target.style.display = 'none'; // Hide if missing
-              }}
+              className="h-16 sm:h-20 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
+              onError={(e) => { e.target.style.display = 'none'; }}
             />
-            {/* Fallback Text if image fails loading */}
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors hidden sm:block">
-              COUNTER <span className="text-[#D4AF37]">88</span>
-            </span>
           </button>
 
           {/* Desktop Nav */}
@@ -829,7 +825,6 @@ const Footer = ({ onNavigate }) => {
                   e.target.style.display = 'none';
                 }}
               />
-              <span className="text-xl font-bold">COUNTER <span className="text-[#D4AF37]">88</span></span>
             </div>
             <div className="space-y-4 text-sm mb-8">
                <div className="flex items-center">
