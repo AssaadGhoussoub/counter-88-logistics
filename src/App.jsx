@@ -30,7 +30,7 @@ import {
 
 /**
  * COUNTER 88 GLOBAL LOGISTICS
- * Version: 2.9 (Map as Background, China Flag, Favicon)
+ * Version: 2.10 (Fixed Hero Section Spacing/Overlap)
  * Style: Modern Fintech/Tech inspired
  */
 
@@ -323,8 +323,8 @@ const HeroSection = ({ onNavigate }) => {
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-[#D4AF37]/10 rounded-full blur-[60px] sm:blur-[80px] animate-float z-0"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-center">
-        {/* Increased top padding for mobile to clear fixed header */}
-        <div className="max-w-3xl pt-32 sm:pt-0">
+        {/* Increased top padding for mobile and desktop to clear fixed header */}
+        <div className="max-w-3xl pt-32 sm:pt-28">
           
           <div className="inline-flex items-center space-x-3 glass-panel rounded-full pl-2 pr-6 py-2 mb-8 animate-fade-up border border-[#D4AF37]/30" style={{animationDelay: '0.1s'}}>
             <div className="bg-[#D4AF37] text-[#051e36] rounded-full p-1.5">
