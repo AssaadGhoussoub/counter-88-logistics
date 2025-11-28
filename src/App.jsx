@@ -32,7 +32,7 @@ import {
  * COUNTER 88 GLOBAL LOGISTICS
  * Version: 3.5 (Final - PNG Logo Only)
  * Dependencies: lucide-react, tailwindcss
- * Assets Required: public/counter-88.png
+ * Assets Required: public/counter88.png
  */
 
 // --- Styles for Animations & Utilities ---
@@ -151,7 +151,7 @@ const SEOHead = ({ page }) => {
     const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
     link.type = 'image/png';
     link.rel = 'icon';
-    link.href = 'counter.88-png'; 
+    link.href = 'counter88.png'; 
     document.getElementsByTagName('head')[0].appendChild(link);
 
     window.scrollTo(0, 0);
@@ -191,9 +191,9 @@ const Navigation = ({ onNavigate, currentPage }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 sm:h-24">
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
-            {/* LOGO IMAGE - Ensure counter-88.png is in /public folder */}
+            {/* LOGO IMAGE - Ensure counter88.png is in /public folder */}
             <img 
-              src="counter.88-png" 
+              src="counter88.png" 
               alt="Counter 88 Logo" 
               className="h-32 sm:h-40 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
@@ -816,7 +816,7 @@ const Footer = ({ onNavigate }) => {
           {/* Contact/Socials Column */}
           <div>
              <div className="flex items-center space-x-3 text-white mb-6">
-              {/* Ensure 'counter-88.png' is in your public folder */}
+              {/* Ensure 'counter88.png' is in your public folder if needed in src*/}
               <img 
                 src="" 
                 alt="Counter 88 Logo" 
