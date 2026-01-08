@@ -834,17 +834,6 @@ const Footer = ({ onNavigate }) => {
 
           {/* Contact/Socials Column */}
           <div>
-             <div className="flex items-center space-x-3 text-white mb-6">
-              {/* Using PNG Logo - Ensure counter.88.png is in your public folder */}
-              <img 
-                src="images/counter88.png" 
-                alt="Counter 88 Logo" 
-                className="h-8 w-auto"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            </div>
             <div className="space-y-4 text-sm mb-8">
                <div className="flex items-center">
                  <Mail className="h-4 w-4 text-[#D4AF37] mr-3 flex-shrink-0" />
@@ -867,9 +856,6 @@ const Footer = ({ onNavigate }) => {
               </a>
               <a href="https://www.facebook.com/profile.php?id=61584855365110" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
                 <Facebook className="h-6 w-6" />
-              </a>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
-                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
