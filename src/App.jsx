@@ -181,13 +181,10 @@ const Navigation = ({ onNavigate, currentPage }) => {
             <img 
               src="images/counter88.png" 
               alt="Counter 88 Logo" 
-              className="h-16 sm:h-20 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
+              className="h-32 sm:h-40 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
             />
             {/* Text hidden by default on desktop if logo loads, acts as fallback/SEO */}
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors hidden sm:block">
-              COUNTER <span className="text-[#D4AF37]">88</span>
-            </span>
           </button>
 
           {/* Desktop Nav */}
@@ -840,7 +837,7 @@ const Footer = ({ onNavigate }) => {
              <div className="flex items-center space-x-3 text-white mb-6">
               {/* Using PNG Logo - Ensure counter.88.png is in your public folder */}
               <img 
-                src="counter.88.png" 
+                src="images/counter88.png" 
                 alt="Counter 88 Logo" 
                 className="h-8 w-auto"
                 onError={(e) => {
@@ -868,7 +865,7 @@ const Footer = ({ onNavigate }) => {
               <a href="https://www.instagram.com/Counter.88" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://www.facebook.com/Counter.88" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61584855365110" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
               <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
