@@ -32,7 +32,7 @@ import {
  * COUNTER 88 GLOBAL LOGISTICS
  * Version: 3.12 (Final Production - Formatted Text, Fixed Footer Logo & Cleaned)
  * Dependencies: lucide-react, tailwindcss
- * Assets Required: public/counter.88.png
+ * Assets Required: public/images/counter88.png
  */
 
 // --- Styles for Animations & Utilities ---
@@ -137,7 +137,7 @@ const SEOHead = ({ page }) => {
     const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
     link.type = 'image/png';
     link.rel = 'icon';
-    link.href = 'counter.88.png';
+    link.href = 'images/counter88.png';
     document.getElementsByTagName('head')[0].appendChild(link);
 
     window.scrollTo(0, 0);
@@ -179,7 +179,7 @@ const Navigation = ({ onNavigate, currentPage }) => {
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
             {/* LOGO IMAGE */}
             <img 
-              src="counter.88.png" 
+              src="images/counter88.png" 
               alt="Counter 88 Logo" 
               className="h-16 sm:h-20 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
