@@ -173,7 +173,7 @@ const Navigation = ({ onNavigate, currentPage }) => {
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
             {/* LOGO IMAGE - using counter.88.png */}
             <img 
-              src="iamges/counter88.png" 
+              src="images/counter88.png" 
               alt="Counter 88 Logo" 
               className="h-32 sm:h-40 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
