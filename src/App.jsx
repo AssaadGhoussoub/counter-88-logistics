@@ -30,9 +30,9 @@ import {
 
 /**
  * COUNTER 88 GLOBAL LOGISTICS
- * Version: 3.12 (Final Production - Formatted Text, Fixed Footer Logo & Cleaned)
+ * Version: 3.15 (Final - Verified Map & Logo)
  * Dependencies: lucide-react, tailwindcss
- * Assets Required: public/images/counter88.png
+ * Assets Required: public/counter.88.png
  */
 
 // --- Styles for Animations & Utilities ---
@@ -77,14 +77,8 @@ const GlobalStyles = () => (
   `}</style>
 );
 
-// SVG String for Favicon
-const faviconSVG = `data:image/svg+xml,<svg viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 20 L 35 20 L 35 18 L 5 18 Z" fill="%23D4AF37"/><path d="M65 20 L 95 20 L 95 18 L 65 18 Z" fill="%23D4AF37"/><path d="M5 19 H 35" stroke="%23DC2626" stroke-width="1"/><path d="M65 19 H 95" stroke="%23DC2626" stroke-width="1"/><circle cx="42" cy="16" r="9" fill="%230047AB" stroke="%23DC2626" stroke-width="2.5"/><circle cx="58" cy="24" r="9" fill="%230047AB" stroke="%23DC2626" stroke-width="2.5"/></svg>`;
-
 // --- Secure Reveal Component (Anti-Spam) ---
 const SecureReveal = ({ value, type, label, className = "" }) => {
-  // In this version, we default to direct links as requested, 
-  // but keeping component structure in case we want to revert to hide/show logic.
-  // Currently renders direct link immediately.
   const href = type === 'email' ? `mailto:${value}` : `tel:${value.replace(/\s+/g, '')}`;
   return (
     <a href={href} className={`hover:text-[#D4AF37] transition-colors break-all ${className}`}>
@@ -133,11 +127,11 @@ const SEOHead = ({ page }) => {
     }
     document.title = title;
     
-    // Set Favicon
+    // Set Favicon using counter.88.png
     const link = document.querySelector("link[rel~='icon']") || document.createElement('link');
     link.type = 'image/png';
     link.rel = 'icon';
-    link.href = 'images/counter88.png';
+    link.href = 'counter88.png';
     document.getElementsByTagName('head')[0].appendChild(link);
 
     window.scrollTo(0, 0);
@@ -156,9 +150,9 @@ const Navigation = ({ onNavigate, currentPage }) => {
   }, []);
 
   const navLinks = [
+    { name: 'About Us', id: 'about' },
     { name: 'Services', id: 'services' },
     { name: 'Process', id: 'process' },
-    { name: 'About Us', id: 'about' },
   ];
 
   const handleNavClick = (id) => {
@@ -177,14 +171,16 @@ const Navigation = ({ onNavigate, currentPage }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 sm:h-24">
           <button onClick={() => onNavigate('home')} className="flex items-center space-x-3 focus:outline-none group z-50 relative">
-            {/* LOGO IMAGE */}
+            {/* LOGO IMAGE - using counter.88.png */}
             <img 
-              src="images/counter88.png" 
+              src="counter88.png" 
               alt="Counter 88 Logo" 
               className="h-32 sm:h-40 w-auto drop-shadow-lg group-hover:scale-105 transition-transform duration-300 object-contain"
               onError={(e) => { e.target.style.display = 'none'; }}
             />
-            {/* Text hidden by default on desktop if logo loads, acts as fallback/SEO */}
+            {/* <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors hidden sm:block">
+              COUNTER <span className="text-[#D4AF37]">88</span>
+            </span> */}
           </button>
 
           {/* Desktop Nav */}
@@ -289,7 +285,7 @@ const HeroSection = ({ onNavigate }) => {
       <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-[#D4AF37]/10 rounded-full blur-[60px] sm:blur-[80px] animate-float z-0"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col justify-center">
-        <div className="max-w-3xl pt-32 sm:pt-28">
+        <div className="max-w-3xl pt-36 sm:pt-28 pb-12">
           
           <div className="inline-flex items-center space-x-3 glass-panel rounded-full pl-2 pr-6 py-2 mb-8 animate-fade-up border border-[#D4AF37]/30" style={{animationDelay: '0.1s'}}>
             <div className="bg-[#D4AF37] text-[#051e36] rounded-full p-1.5 flex-shrink-0">
@@ -309,10 +305,9 @@ const HeroSection = ({ onNavigate }) => {
           </h1>
           
           <p className="text-lg sm:text-xl text-slate-300 mb-12 max-w-xl leading-relaxed animate-fade-up border-l-4 border-[#DC2626] pl-6 glass-panel py-4 rounded-r-xl" style={{animationDelay: '0.3s'}}>
-            We don't just move cargo;<br />
-            we protect your business.<br />
-            Verified global shipping with real-time tracking<br />
-            and zero hidden costs.
+            Verified worldwide shipping,<br />
+            continuous tracking,<br />
+            and zero surprises in cost.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-up" style={{animationDelay: '0.4s'}}>
@@ -679,7 +674,7 @@ const ContactPage = () => {
                    <p className="text-slate-300 mb-3">Elyssar Main Road - El Khoury Center - Facing Mike Sport<br/>+961 76 98 58 28</p>
                    <div className="rounded-xl overflow-hidden h-48 md:h-56 w-full border border-white/10">
                      <iframe 
-                       src="https://maps.google.com/maps?q=33.9271328,35.6240338&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1528.605116331826!2d35.622633884997484!3d33.92588720234621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f3f7e081d5191%3A0x372b72e99b85cb7e!2sCounter%2088!5e1!3m2!1sen!2sus!4v1767955146373!5m2!1sen!2sus"
                        width="100%" 
                        height="100%" 
                        style={{border:0}} 
@@ -834,6 +829,7 @@ const Footer = ({ onNavigate }) => {
 
           {/* Contact/Socials Column */}
           <div>
+            
             <div className="space-y-4 text-sm mb-8">
                <div className="flex items-center">
                  <Mail className="h-4 w-4 text-[#D4AF37] mr-3 flex-shrink-0" />
@@ -854,8 +850,11 @@ const Footer = ({ onNavigate }) => {
               <a href="https://www.instagram.com/Counter.88" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61584855365110" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
+              <a href="https://www.facebook.com/share/1Edd98x1SR/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
                 <Facebook className="h-6 w-6" />
+              </a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#D4AF37] transition-colors">
+                <Linkedin className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -887,9 +886,9 @@ const App = () => {
       default: return (
         <>
           <HeroSection onNavigate={setCurrentPage} />
+          <AboutSection />
           <ServicesSection />
           <ProcessSection />
-          <AboutSection />
           <CTASection onNavigate={setCurrentPage} />
         </>
       );
