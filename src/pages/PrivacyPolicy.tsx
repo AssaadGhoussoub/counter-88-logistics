@@ -36,7 +36,6 @@ const PrivacyPolicy = () => {
             <h2 className="text-xl font-bold text-foreground mb-4">5. Contact Us</h2>
             <p className="leading-relaxed">
               If you have any questions about this privacy policy, you can contact us at:<br />
-              <strong className="text-foreground">Email:</strong> info@counter-88.com <br />
               <strong className="text-foreground">Phone:</strong> +961 76 98 58 28
             </p>
           </section>

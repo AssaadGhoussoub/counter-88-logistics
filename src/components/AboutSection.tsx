@@ -37,7 +37,7 @@ const AboutSection = () => {
               <ul className="space-y-3 sm:space-y-5">
                 {[
                   "We NEVER ask for Crypto/Gift Card payments.",
-                  "Verify emails come from @counter-88.com.",
+                  "Verify communications come from our office Whatsapp number.",
                   "Always request formal Bill of Lading (BL).",
                   "Report suspicious activity immediately."
                 ].map((tip, i) => (

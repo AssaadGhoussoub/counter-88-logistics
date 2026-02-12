@@ -503,7 +503,7 @@ const AboutSection = () => {
               <ul className="space-y-3 sm:space-y-5">
                 {[
                   "We NEVER ask for Crypto/Gift Card payments.",
-                  "Verify emails come from @counter-88.com.",
+                  "Verify communications come from our official whatsapp number.",
                   "Always request formal Bill of Lading (BL).",
                   "Report suspicious activity immediately."
                 ].map((tip, i) => (
@@ -897,7 +897,6 @@ const PrivacyPolicy = () => {
             <h2 className="text-xl font-bold text-white mb-4">6. Contact Us</h2>
             <p className="leading-relaxed">
               If you have questions about this Privacy Policy, please contact us at: <br />
-              <strong className="text-white">Email:</strong> info@counter-88.com <br />
               <strong className="text-white">Phone:</strong> +961 76 98 58 28
             </p>
           </section>
