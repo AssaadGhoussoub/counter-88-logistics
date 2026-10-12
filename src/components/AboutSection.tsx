@@ -9,14 +9,14 @@ const AboutSection = () => {
         <FadeInSection>
           <div className="text-center mb-8 md:mb-16">
             <span className="text-primary font-bold uppercase tracking-widest text-sm">About Us</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4">Trusted Logistics <span className="text-primary">Partner</span></h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-4">Your China to Lebanon <span className="text-primary">Logistics Partner</span></h2>
           </div>
         </FadeInSection>
 
         <div className="grid md:grid-cols-2 gap-6 md:gap-20 items-center">
           <FadeInSection>
             <p className="text-foreground text-lg md:text-2xl font-semibold mb-4 leading-relaxed text-center md:text-left">
-              Importing from China made simple and transparent.
+              Importing from China to Lebanon made simple and transparent.
               <span className="text-primary"> Your cargo shouldn't be a gamble.</span>
             </p>
             <p className="text-muted-foreground mb-6 sm:mb-10 text-sm sm:text-lg leading-relaxed border-l-4 border-border pl-6 text-center md:text-left">

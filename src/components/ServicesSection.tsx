@@ -28,9 +28,9 @@ const ChinaReachGraphicBg = () => (
 
 const ServicesSection = () => {
   const services = [
-    { icon: Ship, title: "Ocean Freight", description: "Secure FCL/LCL container shipping with tamper-proof seal verification." },
-    { icon: Plane, title: "Air Freight", description: "Priority secure air cargo for high-value goods. Direct tarmac transfers." },
-    { icon: Truck, title: "Road Transport", description: "GPS-monitored fleet. Door-to-door delivery with photo confirmation." },
+    { icon: Ship, title: "Ocean Freight", description: "Discuss FCL and LCL sea freight for shipping from China to Lebanon. Share cargo weight, dimensions and collection details for a quote." },
+    { icon: Plane, title: "Air Freight", description: "Ask about air freight from China to Lebanon for time-sensitive cargo. Confirm goods acceptance, available schedules and costs before booking." },
+    { icon: Truck, title: "Road Transport", description: "Discuss collection and delivery requirements with our team. Confirm the destination, service coverage and included charges in your shipping quote." },
   ];
 
   return (
@@ -41,13 +41,13 @@ const ServicesSection = () => {
         <FadeInSection>
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-24">
             <span className="text-primary font-bold uppercase tracking-widest text-sm">SERVICES</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4"><span className="text-primary">Core Logistics </span>Capabilities</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mt-4"><span className="text-primary">Sea Freight, Air Cargo </span>&amp; Delivery</h2>
           </div>
         </FadeInSection>
         <div className="grid md:grid-cols-3 gap-4 md:gap-8">
           {services.map((service, index) => (
             <FadeInSection key={index} style={{ transitionDelay: `${index * 100}ms` }}>
-              <div className="glass-panel p-5 sm:p-8 md:p-10 rounded-3xl h-full glass-card group cursor-pointer">
+              <div className="glass-panel p-5 sm:p-8 md:p-10 rounded-3xl h-full glass-card group">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 bg-muted rounded-2xl flex items-center justify-center mb-4 sm:mb-8 group-hover:scale-110 transition-transform duration-500 border border-border group-hover:border-primary/50">
                   <service.icon className="h-6 w-6 sm:h-8 sm:w-8 text-foreground group-hover:text-primary transition-colors" />
                 </div>

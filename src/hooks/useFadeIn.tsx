@@ -1,15 +1,16 @@
 import { useState, useEffect, useRef, ReactNode } from 'react';
 
 export const useOnScreen = (ref: React.RefObject<Element>) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+  const [isIntersecting, setIntersecting] = useState(true);
   useEffect(() => {
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setIntersecting(true); return; }
     const observer = new IntersectionObserver(
-      ([entry]) => setIntersecting(entry.isIntersecting),
+      ([entry]) => { if (entry.isIntersecting) setIntersecting(true); },
       { threshold: 0.1 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [ref]);
   return isIntersecting;
 };
 

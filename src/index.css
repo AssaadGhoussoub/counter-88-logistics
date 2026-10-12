@@ -20,7 +20,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 30% 15%;
-    --muted-foreground: 215 16% 55%;
+    --muted-foreground: 215 16% 68%;
 
     --accent: 210 40% 14%;
     --accent-foreground: 210 20% 85%;
@@ -124,4 +124,10 @@
 
 .animate-fade-up {
   animation: fade-up 0.8s ease-out forwards;
+}
+
+section[id] { scroll-margin-top: 10rem; }
+:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }

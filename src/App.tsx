@@ -6,8 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import CookieConsent from "@/components/CookieConsent";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import PageMetadata from "@/components/PageMetadata";
+import RouteScroll from "@/components/RouteScroll";
 import Index from "./pages/Index";
 import ContactPage from "./pages/ContactPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
@@ -16,13 +16,15 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+export const SiteApp = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+
         <div className="font-sans bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+          <PageMetadata />
+          <RouteScroll />
           <Navigation />
           <main>
             <Routes>
@@ -35,12 +37,12 @@ const App = () => (
           </main>
           <Footer />
           <WhatsAppFloat />
-          <CookieConsent />
-          <GoogleAnalytics />
+
         </div>
-      </BrowserRouter>
+
     </TooltipProvider>
   </QueryClientProvider>
 );
 
+const App = () => <BrowserRouter><SiteApp /></BrowserRouter>;
 export default App;

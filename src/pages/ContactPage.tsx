@@ -1,21 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Phone, MapPin, CheckCircle, ShieldAlert } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Phone, MapPin, CheckCircle } from 'lucide-react';
+import { validateInquiry, inquiryUrl } from '@/lib/inquiry';
 
-const WHATSAPP_NUMBER = "96176985828";
+
 
 const ContactPage = () => {
-  const navigate = useNavigate();
-  const hasCookieConsent = (() => {
-    const consent = localStorage.getItem('counter88_cookie_consent');
-    if (!consent) return false;
-    try {
-      const parsed = JSON.parse(consent);
-      return parsed.necessary === true;
-    } catch {
-      return false;
-    }
-  })();
   const [formData, setFormData] = useState({
     name: '', email: '', company: '', service: 'ocean', message: '',
     website_url: '', math_answer: ''
@@ -23,6 +12,7 @@ const ContactPage = () => {
   const [mathQuestion, setMathQuestion] = useState({ num1: 0, num2: 0 });
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [draftUrl, setDraftUrl] = useState('');
 
   const generateMath = () => {
     setMathQuestion({ num1: Math.floor(Math.random() * 10) + 1, num2: Math.floor(Math.random() * 10) + 1 });
@@ -30,40 +20,26 @@ const ContactPage = () => {
 
   useEffect(() => { generateMath(); window.scrollTo(0, 0); }, []);
 
-  useEffect(() => {
-    document.title = 'Counter 88 Logistics | Contact Us';
-    return () => { document.title = 'Counter 88 Logistics | Secure Shipping'; };
-  }, []);
-
-  const validate = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    else if (!/^[A-Za-z\s]+$/.test(formData.name)) newErrors.name = "Name must contain only letters";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Invalid email address";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
-    else if (formData.message.length < 10) newErrors.message = "Message must be at least 10 characters";
-    if (parseInt(formData.math_answer) !== mathQuestion.num1 + mathQuestion.num2) newErrors.math = "Incorrect math answer";
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
     if (formData.website_url) return;
-    if (validate()) {
-      const text = `👋 *New Inquiry from Website*\n\n👤 *Name:* ${formData.name}\n🏢 *Company:* ${formData.company || 'N/A'}\n📧 *Email:* ${formData.email}\n📦 *Service:* ${formData.service.toUpperCase()}\n\n📝 *Message:*\n${formData.message}`;
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
-      setSubmitted(true);
-    } else {
-      generateMath();
-      setFormData(prev => ({ ...prev, math_answer: '' }));
+    const nextErrors = validateInquiry(formData, mathQuestion.num1 + mathQuestion.num2);
+    setErrors(nextErrors);
+    const first = Object.keys(nextErrors)[0];
+    if (first) {
+      document.getElementById(first === 'math' ? 'math_answer' : first)?.focus();
+      return;
     }
+    const url = inquiryUrl(formData);
+    setDraftUrl(url);
+    try { window.open(url, '_blank', 'noopener,noreferrer'); } catch { /* The visible draft link remains available. */ }
+    setSubmitted(true);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: null });
+    const field = e.target.name === 'math_answer' ? 'math' : e.target.name;
+    if (errors[field]) setErrors({ ...errors, [field]: null });
   };
 
   const inputClass = (field: string) =>
@@ -79,9 +55,9 @@ const ContactPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
           <span className="text-secondary font-bold uppercase tracking-widest text-sm">Get in Touch</span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mt-4 mb-4 sm:mb-6">Contact Secure Desk</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mt-4 mb-4 sm:mb-6">Contact Counter 88 Logistics</h1>
           <p className="text-muted-foreground text-sm sm:text-lg max-w-2xl mx-auto">
-            Our global team is available 24/7 to verify shipments and provide quotes.
+            Contact our Lebanon and Guangzhou teams for China to Lebanon shipping quotes. Share your goods, packed weight and dimensions, origin and destination.
           </p>
         </div>
 
@@ -94,7 +70,7 @@ const ContactPage = () => {
               </div>
               <div>
                 <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest">24/7 Support</p>
-                <a href="tel:+96176985828" className="text-base sm:text-lg md:text-xl font-bold text-foreground mt-1 hover:text-primary transition-colors">Call Us</a>
+                <a href="tel:+96176985828" className="text-base sm:text-lg md:text-xl font-bold text-foreground mt-1 hover:text-primary transition-colors">+961 76 98 58 28</a>
               </div>
             </div>
 
@@ -107,17 +83,17 @@ const ContactPage = () => {
               </div>
               <div className="space-y-4 sm:space-y-8">
                 <div>
-                  <h4 className="text-primary font-bold uppercase tracking-wider text-sm mb-2">Lebanon Office</h4>
-                  <p className="text-muted-foreground text-sm sm:text-base mb-3">Elyssar Main Road - El Khoury Center<br />+961 76 98 58 28</p>
+                  <h4 className="text-primary font-bold uppercase tracking-wider text-sm mb-2">Elissar Office — Lebanon</h4>
+                  <p className="text-muted-foreground text-sm sm:text-base mb-3">Elissar Main Road - El Khoury Center<br />+961 76 98 58 28</p>
                   <div className="rounded-xl overflow-hidden h-40 sm:h-48 md:h-56 w-full border border-border">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1528.605116331826!2d35.622633884997484!3d33.92588720234621!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151f3f7e081d5191%3A0x372b72e99b85cb7e!2sCounter%2088!5e1!3m2!1sen!2sus!4v1767955146373!5m2!1sen!2sus" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Lebanon Office Map" />
+                    <a href="https://www.google.com/maps/search/?api=1&query=33.92636708425874%2C35.62379759104614" target="_blank" rel="noopener noreferrer" aria-label="Open Counter 88 Elissar office coordinates in Google Maps" className="relative block h-full w-full group"><iframe src="https://maps.google.com/maps?q=33.92636708425874%2C35.62379759104614&z=17&output=embed" title="Counter 88 Elissar office map preview" width="100%" height="100%" loading="lazy" tabIndex={-1} aria-hidden="true" referrerPolicy="no-referrer-when-downgrade" className="pointer-events-none border-0" /><span className="absolute bottom-0 inset-x-0 bg-background/90 text-primary text-sm font-semibold px-4 py-2 text-center group-hover:bg-background">Counter 88 — Elissar Office · Open in Google Maps</span></a>
                   </div>
                 </div>
                 <div>
-                  <h4 className="text-primary font-bold uppercase tracking-wider text-sm mb-2">China Office</h4>
+                  <h4 className="text-primary font-bold uppercase tracking-wider text-sm mb-2">Guangzhou — General Location</h4>
                   <p className="text-muted-foreground text-sm sm:text-base mb-3">Guangzhou, China</p>
                   <div className="rounded-xl overflow-hidden h-40 sm:h-48 md:h-56 w-full border border-border">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d236154.56735818126!2d113.14749019822027!3d23.124991841243056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3402f895e36ea9d3%3A0xe3891b62529b073e!2sGuangzhou%2C%20Guangdong%20Province%2C%20China!5e0!3m2!1sen!2slb!4v1600000000000" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="China Office Map" />
+                    <a href="https://www.google.com/maps/search/?api=1&query=23.124991841243056%2C113.14749019822027" target="_blank" rel="noopener noreferrer" aria-label="Open Guangzhou location coordinates in Google Maps" className="relative block h-full w-full group"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d236154.56735818126!2d113.14749019822027!3d23.124991841243056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3402f895e36ea9d3%3A0xe3891b62529b073e!2sGuangzhou%2C%20Guangdong%20Province%2C%20China!5e0!3m2!1sen!2slb!4v1600000000000" title="Guangzhou location map preview" width="100%" height="100%" loading="lazy" tabIndex={-1} aria-hidden="true" referrerPolicy="no-referrer-when-downgrade" className="pointer-events-none border-0" /><span className="absolute bottom-0 inset-x-0 bg-background/90 text-primary text-sm font-semibold px-4 py-2 text-center group-hover:bg-background">Open in Google Maps</span></a>
                   </div>
                 </div>
               </div>
@@ -126,59 +102,43 @@ const ContactPage = () => {
 
           {/* Right: Form */}
           <div className="glass-panel p-5 sm:p-8 md:p-10 rounded-3xl border-t-4 border-secondary relative h-fit">
-            {!hasCookieConsent ? (
-              <div className="text-center py-12 animate-fade-up">
-                <div className="w-20 h-20 bg-secondary/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <ShieldAlert className="h-10 w-10 text-secondary" />
-                </div>
-                <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Cookie Consent Required</h4>
-                <p className="text-muted-foreground mb-8 px-4">
-                  Please accept the necessary cookies before contacting us. This ensures your data is handled securely.
-                </p>
-                <button
-                  onClick={() => {
-                    localStorage.removeItem('counter88_cookie_consent');
-                    window.location.reload();
-                  }}
-                  className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold uppercase tracking-wider hover:opacity-90 transition-colors shadow-lg"
-                >
-                  Open Cookie Settings
-                </button>
-              </div>
-            ) : submitted ? (
+            {submitted ? (
               <div className="text-center py-12 animate-fade-up">
                 <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <CheckCircle className="h-10 w-10 text-green-500" />
                 </div>
-                <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Request Received</h4>
+                <h4 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Continue in WhatsApp</h4>
                 <p className="text-muted-foreground mb-8 px-4">
-                  Thank you! We have opened WhatsApp for you. We will contact you shortly.
+                  Your inquiry is prepared. Send it in WhatsApp to contact us. If no window opened, use the link below. Your message is not sent until you send it in WhatsApp.
                 </p>
-                <button onClick={() => { setSubmitted(false); setFormData({ name: '', email: '', company: '', service: 'ocean', message: '', website_url: '', math_answer: '' }); generateMath(); }} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold uppercase tracking-wider hover:opacity-90 transition-colors shadow-lg">
-                  Send another message
+                <a href={draftUrl} target="_blank" rel="noopener noreferrer" className="inline-block text-primary underline font-bold mb-6">Open your prepared inquiry in WhatsApp</a>
+                <button onClick={() => setSubmitted(false)} className="bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold uppercase tracking-wider hover:opacity-90 transition-colors shadow-lg">
+                  Edit inquiry
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Secure Inquiry Form</h3>
+              <form noValidate onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">Prepare Your WhatsApp Inquiry</h3>
+                {Object.values(errors).some(Boolean) && <p role="alert" className="text-secondary">Please correct the highlighted fields before continuing.</p>}
                 <div className="hidden"><input name="website_url" value={formData.website_url} onChange={handleChange} tabIndex={-1} autoComplete="off" /></div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" htmlFor="name">Name <span className="text-secondary">*</span></label>
-                    <input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className={inputClass('name')} />
-                    {errors.name && <p className="text-secondary text-xs mt-1">{errors.name}</p>}
+                    <input id="name" maxLength={100} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'name-error' : undefined} required name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className={inputClass('name')} />
+                    {errors.name && <p id="name-error" className="text-secondary text-xs mt-1">{errors.name}</p>}
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" htmlFor="company">Company</label>
-                    <input id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Company Name" className={inputClass('company')} />
+                    <input id="company" maxLength={100} aria-invalid={!!errors.company} aria-describedby={errors.company ? 'company-error' : undefined} name="company" value={formData.company} onChange={handleChange} placeholder="Company Name" className={inputClass('company')} />
+                    {errors.company && <p id="company-error" className="text-secondary text-xs mt-1">{errors.company}</p>}
                   </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" htmlFor="email">Email <span className="text-secondary">*</span></label>
-                    <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className={inputClass('email')} />
-                    {errors.email && <p className="text-secondary text-xs mt-1">{errors.email}</p>}
+                    <input id="email" maxLength={254} aria-invalid={!!errors.email} aria-describedby={errors.email ? 'email-error' : undefined} required name="email" type="email" value={formData.email} onChange={handleChange} placeholder="Email Address" className={inputClass('email')} />
+                    {errors.email && <p id="email-error" className="text-secondary text-xs mt-1">{errors.email}</p>}
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" htmlFor="service">Service</label>
@@ -192,18 +152,18 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2" htmlFor="message">Message <span className="text-secondary">*</span></label>
-                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Describe your shipment needs..." rows={4} className={inputClass('message')} />
-                  {errors.message && <p className="text-secondary text-xs mt-1">{errors.message}</p>}
+                  <textarea id="message" maxLength={1000} aria-invalid={!!errors.message} aria-describedby={errors.message ? 'message-error' : undefined} required name="message" value={formData.message} onChange={handleChange} placeholder="Describe your shipment needs..." rows={4} className={inputClass('message')} />
+                  {errors.message && <p id="message-error" className="text-secondary text-xs mt-1">{errors.message}</p>}
                 </div>
                 <div>
-                  <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
+                  <label htmlFor="math_answer" className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
                     What is {mathQuestion.num1} + {mathQuestion.num2}? <span className="text-secondary">*</span>
                   </label>
-                  <input name="math_answer" value={formData.math_answer} onChange={handleChange} placeholder="Your answer" type="number" className={inputClass('math')} />
-                  {errors.math && <p className="text-secondary text-xs mt-1">{errors.math}</p>}
+                  <input id="math_answer" maxLength={3} aria-invalid={!!errors.math} aria-describedby={errors.math ? 'math-error' : undefined} required name="math_answer" value={formData.math_answer} onChange={handleChange} placeholder="Your answer" type="text" inputMode="numeric" autoComplete="off" className={inputClass('math')} />
+                  {errors.math && <p id="math-error" className="text-secondary text-xs mt-1">{errors.math}</p>}
                 </div>
-                <button type="submit" className="w-full gradient-red text-secondary-foreground py-3 sm:py-4 rounded-xl font-bold uppercase tracking-wider hover:shadow-[0_0_30px_hsl(var(--red)/0.4)] transition-all text-sm sm:text-base">
-                  Send Secure Inquiry
+                <button type="submit" disabled={mathQuestion.num1 === 0} className="w-full gradient-red text-secondary-foreground py-3 sm:py-4 rounded-xl font-bold uppercase tracking-wider hover:shadow-[0_0_30px_hsl(var(--red)/0.4)] transition-all text-sm sm:text-base">
+                  Continue to WhatsApp
                 </button>
               </form>
             )}
