@@ -8,7 +8,7 @@ describe('existing-page SEO', () => {
   it('gives each page unique metadata and a self canonical', () => {
     const titles = Object.keys(SEO_PAGES).map(path => {
       const page = pageSeo(path);
-      expect(page.canonical).toBe('https://counter-88.com' + path);
+      expect(page.canonical).toBe('https://www.counter-88.com' + path);
       expect(page.robots).toBe('index,follow');
       expect(seoHtml(path)).toContain('<link rel="canonical"');
       return page.title;
@@ -16,7 +16,7 @@ describe('existing-page SEO', () => {
     expect(new Set(titles).size).toBe(titles.length);
   });
   it('normalizes trailing slashes and keeps unknown pages out of search', () => {
-    expect(pageSeo('/contact/').canonical).toBe('https://counter-88.com/contact');
+    expect(pageSeo('/contact/').canonical).toBe('https://www.counter-88.com/contact');
     expect(pageSeo('/missing').robots).toBe('noindex,follow');
   });
   it('uses real contact data without invented reviews or pricing', () => {

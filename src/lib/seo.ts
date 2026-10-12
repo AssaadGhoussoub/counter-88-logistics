@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://counter-88.com';
+export const SITE_URL = 'https://www.counter-88.com';
 export const SEO_PAGES: Record<string, { title: string; description: string }> = {
   '/': { title: 'China to Lebanon Shipping & Logistics | Counter 88', description: 'Shipping from China to Lebanon with Counter 88 Logistics. Discuss sea freight, air cargo and delivery with our Lebanon and Guangzhou teams.' },
   '/contact': { title: 'Contact Counter 88 | China to Lebanon Shipping Quotes', description: 'Request a China to Lebanon freight quote. Contact Counter 88 Logistics by phone or WhatsApp, with offices in Lebanon and Guangzhou, China.' },

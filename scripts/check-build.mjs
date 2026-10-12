@@ -11,7 +11,7 @@ for (const route of ['/', '/contact', '/privacy', '/cookies']) {
   assert.equal(doc.querySelectorAll('h1').length, 1, filename + ': single page heading');
   assert.equal(doc.querySelectorAll('title').length, 1, filename + ': single title');
   assert.equal(doc.querySelectorAll('link[rel="canonical"]').length, 1);
-  assert.equal(doc.querySelector('link[rel="canonical"]').href, 'https://counter-88.com' + route);
+  assert.equal(doc.querySelector('link[rel="canonical"]').href, 'https://www.counter-88.com' + route);
   assert.ok(doc.getElementById('root').textContent.length > 300);
   JSON.parse(doc.getElementById('business-schema').textContent);
   for (const script of doc.querySelectorAll('script[src]')) await readFile(resolve(root, '.' + script.getAttribute('src')));

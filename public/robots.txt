@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://counter-88.com/sitemap.xml
+Sitemap: https://www.counter-88.com/sitemap.xml

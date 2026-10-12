@@ -21,6 +21,6 @@ describe('site without optional trackers', () => {
     expect(screen.getByTitle('Counter 88 Elissar office map preview')).toHaveAttribute('src', 'https://maps.google.com/maps?q=33.92636708425874%2C35.62379759104614&z=17&output=embed');
     expect(screen.getByRole('link', { name: 'Open Counter 88 Elissar office coordinates in Google Maps' })).toHaveAttribute('href', 'https://www.google.com/maps/search/?api=1&query=33.92636708425874%2C35.62379759104614');
     expect(screen.getByRole('link', { name: 'Open Guangzhou location coordinates in Google Maps' })).toHaveAttribute('href', 'https://www.google.com/maps/search/?api=1&query=23.124991841243056%2C113.14749019822027');
-    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://counter-88.com/contact');
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute('href', 'https://www.counter-88.com/contact');
   });
 });

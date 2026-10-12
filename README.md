@@ -30,7 +30,7 @@ The development server binds to all network interfaces. Use the URL printed by V
 
 Each page contains its content, unique title/description, canonical URL, social metadata and JSON-LD business information. React hydrates the generated HTML when the URL matches. Internal navigation uses anchor links through React Router. The build also generates `dist/sitemap.xml`; `robots.txt` points to it.
 
-The confirmed production origin is `https://counter-88.com`. Metadata is defined in `src/lib/seo.ts`. If the domain changes, update that constant, the prerender sitemap origin, `public/robots.txt`, and the development HTML canonical together.
+The confirmed production origin is `https://www.counter-88.com`. Metadata is defined in `src/lib/seo.ts`. If the domain changes, update that constant, the prerender sitemap origin, `public/robots.txt`, and the development HTML canonical together.
 
 Publish the **entire `dist/` directory**, not just its root HTML file. Configure the host to serve the route-specific HTML files, supporting `/contact` and `/contact/` consistently. Known pages should return 200; genuinely unknown URLs should return HTTP 404. Do not rewrite every known page to the homepage HTML, because that loses its initial route metadata and content. If unknown URLs use an SPA fallback, configure the HTTP status correctly.
 
@@ -59,3 +59,7 @@ Use Node 22.18 or newer (final local checks used Node 24.12). Commit package.jso
 Validation: 12 tests passed, TypeScript and generated-output checks passed, lint has no errors and eight development export warnings. Production dependency audit reports zero advisories. Five high advisories remain in development-only Tailwind/globbing dependencies because the braces advisory has no upstream patch. Only trusted repository/configuration input should be used for builds; these modules are not served in the static website.
 
 After the update reaches Vercel, verify direct page loads, the real 404 status, security headers and www redirects on the deployed URL. Connect both apex/www domains in Vercel for the hostname redirect to apply. The new configuration has not been deployed by this agent.
+
+## Live hostname correction
+
+Vercel already redirects the bare domain to www.counter-88.com. Application configuration must not redirect www back to the bare domain: that creates an asset redirect loop. The conflicting repository redirect is removed, and canonical URLs/sitemap use the live primary hostname. Preserve the existing Vercel domain redirect.

@@ -17,7 +17,7 @@ for (const route of paths) {
   await writeFile(path.join(root, 'dist', filename), page);
   console.log('Prerendered ' + route);
 }
-const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + paths.map(route => '<url><loc>https://counter-88.com' + route + '</loc></url>').join('') + '</urlset>\n';
+const sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + paths.map(route => '<url><loc>https://www.counter-88.com' + route + '</loc></url>').join('') + '</urlset>\n';
 await writeFile(path.join(root, 'dist/sitemap.xml'), sitemap);
 
 // Render the existing not-found screen for Vercel's genuine HTTP 404 response.

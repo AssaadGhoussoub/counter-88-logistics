@@ -1,3 +1,9 @@
+# Live redirect-loop hotfix — 13 October 2026
+
+Confirmed after deployment: www stylesheet/JavaScript/logo requests returned 308 to the bare hostname, while the existing Vercel domain setting returned 307 from bare to www. The repository redirect introduced earlier was incompatible with that setting. It is removed. Canonical metadata, sitemap, robots declaration, tests and generated-output checks now use https://www.counter-88.com. The previous bare-domain recommendation is superseded. Owner must commit/push this correction before it affects production.
+
+---
+
 # Final checks for the existing live Vercel site — 13 October 2026
 
 ## Changes finalized
