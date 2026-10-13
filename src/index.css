@@ -126,7 +126,9 @@
   animation: fade-up 0.8s ease-out forwards;
 }
 
-section[id] { scroll-margin-top: 10rem; }
+section[id] { scroll-margin-top: 72px; }
+@media (min-width: 640px) { section[id] { scroll-margin-top: 104px; } }
+@media (min-width: 768px) { section[id] { scroll-margin-top: 16px; } }
 :focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

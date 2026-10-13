@@ -3,7 +3,7 @@ import { FadeInSection } from '@/hooks/useFadeIn';
 
 const AboutSection = () => {
   return (
-    <section id="about" className="scroll-mt-20 sm:scroll-mt-24 py-6 md:py-28 bg-background relative overflow-hidden">
+    <section id="about" className="py-6 md:py-28 bg-background relative overflow-hidden">
       <div className="section-divider" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <FadeInSection>

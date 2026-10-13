@@ -11,7 +11,7 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section id="process" className="scroll-mt-20 sm:scroll-mt-24 py-6 md:py-28 bg-background relative overflow-hidden">
+    <section id="process" className="py-6 md:py-28 bg-background relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-10 pointer-events-none z-0" />
       <div className="section-divider" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

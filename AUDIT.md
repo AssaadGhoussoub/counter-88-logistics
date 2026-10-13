@@ -1,3 +1,14 @@
+# Section-navigation alignment fix — 13 October 2026
+
+Removed the competing 160px global scroll margin and component-specific scroll margins. Section navigation now aligns the start of the section content below the final scrolled header, including the logo overhang, with approximately 16px clearance. Section top padding is accounted for so the desktop layout does not add a large blank gap. CSS fallback offsets are consistent at mobile/tablet/desktop breakpoints.
+
+Mobile navigation waits until Radix releases its body scroll lock before positioning, so closing the menu and restoring focus do not undo the scroll. Repeated same-section clicks and cross-route section links remain supported. Pending positioning is cancelled if the user scrolls manually or the route effect unmounts.
+
+Verified in the production browser preview: About Us / Services / Process content at 128px on desktop with a 112px header/logo bottom; approximately 96px on mobile with an 80–81px header bottom. Explore Services, repeated Process clicks and Contact-to-About navigation also aligned correctly. No captured application errors. npm run check passed all 12 tests, TypeScript, build and generated-output validation; existing development warnings remain.
+
+This is a local source correction. Commit/push is required to update the live Vercel deployment; no commit, push or deployment was performed by the agent.
+
+---
 # Live redirect-loop hotfix — 13 October 2026
 
 Confirmed after deployment: www stylesheet/JavaScript/logo requests returned 308 to the bare hostname, while the existing Vercel domain setting returned 307 from bare to www. The repository redirect introduced earlier was incompatible with that setting. It is removed. Canonical metadata, sitemap, robots declaration, tests and generated-output checks now use https://www.counter-88.com. The previous bare-domain recommendation is superseded. Owner must commit/push this correction before it affects production.
